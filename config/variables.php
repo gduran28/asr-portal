@@ -1,0 +1,3 @@
+<?php
+  $SITE_NAME = "GRUPO GRIFFIN"
+?>
