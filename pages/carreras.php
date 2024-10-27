@@ -4,7 +4,7 @@
   include BASE_PATH."/components/Header.php";
 ?>
 <section class="relative z-10 overflow-hidden py-20 lg:py-[120px]">
-<div class="container mx-auto">
+  <div class="container mx-auto">
     <div class="flex flex-wrap -mx-4 lg:justify-between">
       <div class="w-full">
         <div class="mb-12 lg:mb-0">
