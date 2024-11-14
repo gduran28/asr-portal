@@ -2,8 +2,11 @@
   include "config.php";
   include "components/Head.php";
   include "components/Header.php";
+  include "db/connection.php";
 
-  ?>
+  $db = new connection();
+  $results = $db->executeQuery("select o.message, u.name from opinions o inner join users u on u.id = o.publisherid");
+?>
 
 <section class="py-14 lg:py-24 relative">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative ">
@@ -31,34 +34,26 @@
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <h2 class="font-manrope text-4xl text-center text-orange-100 font-bold mb-14">Ejemplos de Testimonios</h2>
     <div class="flex flex-col gap-5 xl:gap-8 lg:flex-row lg:justify-between">
-      <div
-        class="w-full max-lg:max-w-xl mx-auto lg:mx-0 bg-white p-6 rounded-2xl shadow-md shadow-gray-100">
-        <div class="flex gap-5">
-          <div class="font-manrope text-2xl font-bold text-indigo-600">
-            <img src="/assets/connect.png" alt="" srcset="" class="size-12">
-          </div>
-          <div class="flex-1">
-            <h4 class="text-xl text-gray-900 font-semibold mb-2">Jonh Marston</h4>
-            <p class="text-l text-gray-500 leading-5">
-              “Gracias a esta plataforma, encontré el empleo remoto que buscaba desde hace meses.”
-            </p>
-          </div>
-        </div>
-      </div>
-      <div
-        class="w-full max-lg:max-w-2xl mx-auto lg:mx-0 bg-white p-6 rounded-2xl shadow-md shadow-gray-100">
-        <div class="flex gap-5">
-          <div class="font-manrope text-2xl font-bold text-indigo-600">
-            <img src="/assets/connect.png" alt="" srcset="" class="size-12">
-          </div>
-          <div class="flex-1">
-            <h4 class="text-xl text-gray-900 font-semibold mb-2">Arthur Morgan</h4>
-            <p class="text-l text-gray-500 leading-5">
-              “Las herramientas digitales que ofrecen me permitieron optimizar mi negocio rápidamente.”
-            </p>
-          </div>
-        </div>
-      </div>
+      <?php
+        while($row = mysqli_fetch_array($results, MYSQLI_ASSOC)) {
+          echo '
+            <div
+              class="w-full max-lg:max-w-xl mx-auto lg:mx-0 bg-white p-6 rounded-2xl shadow-md shadow-gray-100">
+              <div class="flex gap-5">
+                <div class="font-manrope text-2xl font-bold text-indigo-600">
+                  <img src="/assets/connect.png" alt="" srcset="" class="size-12">
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-xl text-gray-900 font-semibold mb-2">'.$row['name'].'</h4>
+                  <p class="text-l text-gray-500 leading-5">
+                    '.$row['message'].'
+                  </p>
+                </div>
+              </div>
+            </div>
+          ';
+        }
+      ?>
     </div>
   </div>
 </section>

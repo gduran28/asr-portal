@@ -6,7 +6,7 @@
         <a href="/pages/about.php" class="text-white hover:text-orange-100">Sobre nosotros</a>
         <a href="/pages/contactos.php" class="text-white hover:text-orange-100">Contactos</a>
         <a href="/pages/carreras.php" class="text-white hover:text-orange-100">Carreras</a>
-        <a href="/pages/productos.php" class="text-white hover:text-orange-100">Productos</a>
+        <a href="/pages/productos.php" class="text-white hover:text-orange-100">Productos y servicios</a>
       </div>
     </nav>
   </header>
